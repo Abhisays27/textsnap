@@ -1894,7 +1894,44 @@
 <!-- 
             pop up container -->
 
-            <div id="popupContainer"></div>
+            <div class="overlay" id="overlay"></div>
+
+<div class="sliding-window" id="slidingWindow">
+  <div class="window-content">
+    <div class="profile-section">
+        <img src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFsZSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="Joe John's Image" class="profile-image">
+        <div class="profile-details">
+          <h2 class="profile-name">Abhay Singh</h2>
+          <p class="profile-handle">@abhay_singh</p>
+        </div>
+      </div>
+      <hr class="section-divider">
+      <div class="options">
+        <a href="#" class="option">Account Settings</a>
+        <a href="#" class="option" onclick="showDetailsPopUp('Abhishek')">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="overlay2" id="overlay2"></div>
+
+<div class="sliding-window2" id="slidingWindow2">
+    <div class="window-content2">
+      <div class="profile-section">
+          <img src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFsZSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="Joe John's Image" class="profile-image">
+          <div class="profile-details">
+            <h2 class="profile-name">Abhay Singh</h2>
+            <p class="profile-handle">@abhay_singh</p>
+          </div>
+        </div>
+        <hr class="section-divider">
+        <div class="options">
+          <a href="#" class="option">Account Settings</a>
+          <a href="#" class="option" onclick="showDetailsPopUp2()">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
             
 			<!-- ----------Footer-------------------- -->
 			<div class="footer_MainBox">
@@ -1978,8 +2015,44 @@
 	</div>
     </div>
 			<!--------- view-details-popup ------------>
-           
+            <div class="popup" id="popup">
+<div class="cross">
+
+                <div class="profile-section">
+
+                    <img src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFsZSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="Joe John's Image" class="profile-image">
+                    <div class="profile-details">
+                      <h2 class="profile-name">Abhay Singh</h2>
+                      <p class="profile-handle">@abhay_singh</p>
+                    </div>
+                  </div>
+                  <img src="./assets/close.png" alt="" class="arrow_img" onclick="closePopUps()">
+                </div>
+                  <div class="profile-options">
+                    <a onclick="showAnotherPopUp()">Account</a>
+                    <a onclick="logout()">Logout</a>
+                </div>
+               
+        
+            </div>
+            <div class="popup2" id="popup2">
+                <div class="cross">
+
+                    <div class="profile-section">
+    
+                        <img src="https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFsZSUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="Joe John's Image" class="profile-image">
+                        <div class="profile-details">
+                          <h2 class="profile-name">Abhay Singh</h2>
+                          <p class="profile-handle">@abhay_singh</p>
+                        </div>
+                      </div>
+                      <img src="./assets/close.png" alt="" class="arrow_img" onclick="closePopUps()">
+                    </div>
             
+            
+                <p  class="popup2_para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate doloribus nostrum totam laborum deserunt optio harum vero doloremque? Recusandae repellendus harum error hic suscipit vel a nostrum obcaecati dolor quia.</p>
+            </div>
+            <div class="blur-background" id="blurBackground"></div>
            
 		</div>
 	</body>
@@ -2002,63 +2075,45 @@
 
     <script>
 
-var popupIndex = 1;
 
+  
 function showDetailsPopUp() {
-  var popup = document.createElement('div');
-  popup.className = 'popup';
-  popup.id = 'popup' + popupIndex;
-  popup.innerHTML = `
-    <span class="arrow" onclick="closeAllPopups()">
-        <img src="./assets/close.png" alt="">
-        </span>
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('blurBackground').style.display = 'block';
+    document.getElementById('blurBackground').style.opacity = '1'
+    
   
-    <div class="popups_button">
-        <button  onclick="showDetailsPopUp()">Click Here</button>
-        <button  onclick="showDetailsPopUp()">Click Here</button>
-        <button  onclick="showDetailsPopUp()">Click Here</button>
-        <button  onclick="showDetailsPopUp()">Click Here</button>
-        <button  onclick="showDetailsPopUp()">Click Here</button>
-       
-     </div> 
-  `;
-  document.getElementById('popupContainer').appendChild(popup);
-  popup.style.display = 'block';
-   
-   var buttons = popup.querySelectorAll('.popups_button button');
-      buttons.forEach(function(button) {
-        var randomLeft = Math.random() * 80; 
-        var randomTop = Math.random() * 80; 
-
-        button.style.left = randomLeft + '%';
-        button.style.top = randomTop + '%';
-      });
-
-
- 
-  popup.getBoundingClientRect();
-  if (window.matchMedia("(max-width: 500px)").matches) {
-        popup.style.left = '90%'; 
-      } 
-      if (window.matchMedia("(max-width: 1200px)").matches) {
-        popup.style.left = '80%'; 
-      }
-      else {
-        popup.style.left = '70%'; 
-      }
- 
-  popup.style.transform = 'translate(-50%, -50%) translateX(-50%)'; 
-  
-  popupIndex++;
+    setTimeout(() => {
+        document.getElementById('popup').style.transform = 'translateX(0)'; /* Move popup into view */
+    }, 50); // A slight delay for smoother transition
+    document.body.style.overflow = 'hidden';
 }
 
-function closeAllPopups() {
-  var popups = document.getElementsByClassName('popup');
-  for (var i = 0; i < popups.length; i++) {
-    popups[i].style.display = 'none';
-  }
-  
+
+function showAnotherPopUp() {
+    document.getElementById('popup2').style.display = 'block';
+    document.getElementById('blurBackground').style.display = 'block';
+    document.getElementById('blurBackground').style.opacity = '1'; /* Make the blur background visible */
+    setTimeout(() => {
+        document.getElementById('popup2').style.transform = 'translateX(0)'; /* Move popup2 into view */
+    }, 50); // A slight delay for smoother transition
+    document.body.style.overflow = 'hidden';
 }
+
+
+function closePopUps() {
+    document.getElementById('popup').style.transform = 'translateX(100%)'; /* Move popup off-screen to the right */
+    document.getElementById('popup2').style.transform = 'translateX(100%)'; /* Move popup2 off-screen to the right */
+    document.getElementById('blurBackground').style.opacity = '0'; /* Make the blur background transparent */
+    setTimeout(() => {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('popup2').style.display = 'none';
+        document.getElementById('blurBackground').style.display = 'none';
+    }, 300); // Wait for the transition to finish (300ms) before hiding elements
+    document.body.style.overflow = 'auto';
+}
+
+
 
 
     </script>

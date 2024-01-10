@@ -1190,93 +1190,167 @@ font-family: 'Poppins', sans-serif;
 	place-items: center;
 }
 
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, sans-serif;
+  }
+  
+  .container {
+	padding: 20px;
+  }
+  
+  /* Sliding Window styles */
+  
+  body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 
-.popup {
+}
+.blur-background {
     position: fixed;
-    top: 50%;
-    left: 100%; 
-    transform: translate(-50%, -50%) translateX(0);
-    background-color: #c3cbdc;
-background-image: linear-gradient(147deg, #c3cbdc 0%, #edf1f4 74%);
-    height: 60%;
-    padding: 20px;
-	border-radius:20px;
-	background-color: #fec84e;
-	background-image: linear-gradient(315deg, #fec84e 0%, #ffdea8 74%);
-    display: block; 
-    width: 80%;
-    max-width: 500px;
-    transition: transform 0.3s ease-in-out, left 0.3s ease-in-out; /
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(5px); /* Apply background blur */
+    z-index: 9998; /* Ensure it's behind the popups */
+    display: none;
+	transition: opacity 0.3s ease; /* Adding transition for smooth appearance */
+    opacity: 0;
 }
 
-    .popup button {
-      margin-right: 10px;
-      padding: 8px 16px;
-	  border-radius: 10px;
-      border: 1px solid #ccc;
-      background-color: #fefefe;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-	  color: black;
-	  font-weight: 600;
-	  font-size: 15px;
-	  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-	  
-    }
+.popup {
+	position: fixed;
+	width: 50%;
+	height: 99.9%;
+	right: 0;
+	top: 0;
+	background-color: rgb(252, 252, 252);
+	border-radius: 10px;
+	border-color: 1px rgb(100, 95, 95);
+	box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+	display: none;
+	z-index: 9999;
+	transition: transform 0.3s ease, opacity 0.3s ease; /* Adding transition for smooth movement */
+    transform: translateX(100%); 
+	
+}
+.popup button {
+	margin: 10px;
+}
+.popup2 {
+	position: fixed;
+	width: 50%;
+	height: 100%;
+	right: 0;
+	top: 0;
+	border-radius: 10px;
+	border-color: 1px rgb(100, 95, 95);
+	background-color:  rgb(252, 252, 252);
+	box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+	display: none;
+	z-index: 999999;
+	transition: transform 0.3s ease, opacity 0.3s ease; /* Adding transition for smooth movement */
+    transform: translateX(100%); 
+	
+}
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
 
-    .popup button:hover {
-      background-color: #eaeaea;
-    }
-	.popups_button{
-		height: 95%;
-		position: relative;
-		width: auto;
-	}
-	.popups_button button {
-		position: absolute;
-		top: 0;
-		left: 0;
-		margin: 5px;
-	  }
-	  
-.arrow{
+.profile-image {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 50%; /* To make it circular */
+    margin-right: 15px;
+}
+.profile-options {
+   display: flex;
+   flex-direction: column; /* Display options in a column */
+ align-items: start;
+ margin-left: 3%;
+ margin-top: 4%;
+ 
+    
+}
+
+.profile-options a{
+  
+   margin-top: 2%;
+    cursor: pointer;
+    
+}
+.cross{
+	display: flex;
+	justify-content: space-between;
+}
+.popu2_arrow{
 	display: flex;
 	justify-content: end;
 }
-	  .arrow img{
+.popup2_para{
+	margin: 5px 5px 5px 5px;
+}
+
+  .arrow_img{
+	margin-top: 2%;
+	margin-right: 4%;
 		height: 30px;
 		width: 30px;
 	  }
-	  @media  screen and (max-width: 1000px) {
+	  @media  screen and (max-width: 500px) {
 	.popup {
 			
 			
-			top: 27%;
-			height:39%;
-			
+		top: 1%;
+		height: 99%;
 		
 				
 			}
+			
+			
+			.profile-image {
+				width: 35px; /* Adjust as needed */
+				height: 35px; /* Adjust as needed */
+				border-radius: 50%; /* To make it circular */
+				margin-right: 15px;
+			}
+			.profile-details h2{
+				font-size: 11px;
+				font-weight: 600;
+			}
+			.profile-details p{
+				font-size: 9px;
+			}			
+			
+			.profile-options a{
+			  
+			   margin-top: 2%;
+				cursor: pointer;
+				
+			}
+			
+			.popu2_arrow{
+				display: flex;
+				justify-content: end;
+			}
+			.popup2_para{
+				margin: 5px 5px 5px 5px;
+			}
+			
+			  .arrow_img{
+				margin-top: 5%;
+				margin-right: 4%;
+					height: 20px;
+					width: 20px;
+				  }
 	  }
   
 	  
   
 	
-	  @media only screen and (max-width: 764px) {
-		
-		.popups_button button {
-		  font-size: 14px;
-		}
-		.popup {
-			
-			
-			top: 43%;
-			max-width: 300px;
-			height: 55%;
-				
-			}
-			.popups_button{
-				height: 95%;
-				
-			}
-	  }
+	 
